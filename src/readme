@@ -1,0 +1,11 @@
+NIO与零拷贝
+mmap与sendFile的区别
+1）mmap适合小数据量读写，sendFile适合大文件传输
+2）mmap需要4次上下文切换，3次数据拷贝；sendFile需要3次上下文切换，最少2次数据拷贝
+3）sendFile可以采用DMA方式，减少CPU拷贝，mmap则不能（必须从内核拷贝到Socket缓存区）
+
+原生NIO存在的问题
+1）API繁杂
+2）对多线程和网络编程非常熟悉，才能写出该质量的NIO程序
+3）开发工作量和难度都非常大：客户端面临网络闪断、半包读写、失败缓存、网络拥塞和异常流的处理等
+4）NIO存在的Bug， Epoll Bug,它会导致Selector空轮训，最终导致CPU100%,JDK7依旧存在
