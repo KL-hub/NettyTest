@@ -1,0 +1,3 @@
+编解码器（口带）
+  执行命令
+  protoc.exe --java _out=.*.proto
